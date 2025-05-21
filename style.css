@@ -10,15 +10,110 @@
   --card-bg: #2a2a3f;
 }
 
+/* Updated Light Mode Styles */
 .light-mode {
-  --primary-bg: linear-gradient(to right, #f5f7fa, #e4e8f0, #f5f7fa);
+  --primary-bg: linear-gradient(to right, #fff8f0, #ffeedd, #fff8f0);
   --secondary-bg: #ffffff;
-  --text-color: #333333;
-  --accent-color: #4a89dc;
-  --border-color: #d1d1d1;
-  --completed-color: #4a89dc;
-  --box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  --card-bg: #f8f9fa;
+  --text-color: #222222;
+  --accent-color: #ae274f; /* Vibrant orange */
+  --border-color: #ffc3ab;
+  --completed-color: #ae274f;
+  --box-shadow: 0 0 15px rgba(255, 107, 53, 0.1);
+  --card-bg: #fff9f5;
+}
+
+/* Update orange-themed elements */
+.light-mode .day.completed {
+  background-color: #ae274f;
+  border-color: #ae274f;
+  box-shadow: 0 0 8px rgba(255, 107, 53, 0.5);
+}
+
+.light-mode .fa-fire {
+  color: #ae274f;
+}
+
+.light-mode .stat-value {
+  color: #ae274f;
+}
+
+.light-mode .task-list li {
+  border-left: 3px solid #ae274f;
+}
+
+.light-mode .divider-line .line,
+.light-mode .divider-line i {
+  color: #ae274f;
+}
+
+.light-mode .navbar {
+  background-color: #ffffff;
+  border-bottom: 1px solid #ffc3ab;
+}
+
+.light-mode .navbar-brand {
+  color: #ae274f;
+}
+
+/* Improve contrast in light mode */
+.light-mode {
+  color: #444444;
+}
+
+.light-mode h1,
+.light-mode h2,
+.light-mode h3,
+.light-mode p {
+  color: #222222;
+}
+
+.light-mode .stats-container,
+.light-mode .daily-task-container,
+.light-mode .badges-container {
+  border: 1px solid #ffc3ab;
+}
+
+.light-mode .task-input input {
+  background-color: #fff9f5;
+  border: 1px solid #ae274f; 
+}
+
+.light-mode .badge {
+  background-color: #fff5ee;
+}
+
+/* Update progress bar in light mode */
+.light-mode .progress-bar {
+  background: linear-gradient(to right, #ae274f, #ff9e35);
+}
+
+/* Update buttons in light mode */
+.light-mode .task-input button,
+.light-mode #congratulationModal button,
+.light-mode #badgeUnlockedModal button {
+  background-color: #ae274f;
+}
+
+.light-mode .task-input button:hover,
+.light-mode #congratulationModal button:hover,
+.light-mode #badgeUnlockedModal button:hover {
+  background-color: #ff5722;
+}
+
+
+/* Update toggle switch in light mode */
+.light-mode input:checked + .slider {
+  background-color: #ae274f;
+}
+
+/* Update badge locked state in light mode */
+.light-mode .badge.locked {
+  background-color: #f5f5f5;
+}
+
+/* Update divider animation in light mode */
+.light-mode .divider-line i {
+  text-shadow: 0 0 5px rgba(255, 107, 53, 0.3);
 }
 
 
@@ -524,9 +619,21 @@ footer {
 
 }
 
-.fas.fa-fire {
+.fa-fire {
   color: #ae274f;
+  animation: pulse 1.5s ease-in-out infinite;
 }
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.07);
+  }
+}
+
+
 
 
 .download-section {
@@ -766,31 +873,93 @@ footer {
 }
 
 .divider-line .line {
-  height: 2px;
+  height: 2.5px;
   background: var(--accent-color);
   flex: 1;
-  max-width: 150px;
+  max-width: 180px;
 }
 
 .divider-line i {
   margin: 0 15px;
-  font-size: 1.2rem;
+  font-size: 1.6rem;
+  font-weight: bold;
   color: var(--accent-color);
-  animation: pulse 2s infinite;
+  animation: flip-3d 3s ease-in-out infinite;
+  transform-style: preserve-3d; /* Optional for better 3D effect */
 }
 
-@keyframes pulse {
+@keyframes flip-3d {
   0% {
-    transform: scale(1);
+    transform: perspective(500px) rotateY(0deg);
   }
-
-  50% {
-    transform: scale(1.2);
-  }
-
   100% {
-    transform: scale(1);
+    transform: perspective(500px) rotateY(360deg);
   }
 }
 
+
+/* ===== FOOTER DESIGN ===== */
+.footer {
+  background-color: var(--secondary-bg);
+  color: var(--text-color);
+  padding: 2rem 0;
+  border-top: 2px solid var(--border-color);
+  margin-top: 3rem;
+}
+
+/* Footer Bottom (Copyright) */
+.footer-bottom {
+  text-align: center;
+  padding-top: 1rem;
+
+  border-top: 1px solid var(--border-color);
+  font-size: 1rem;
+  opacity: 0.8;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .footer-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .brand-logo,
+  .social-links {
+    justify-content: center;
+  }
+}
+
+
+/* Add this to your style.css */
+.pwa-button {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 20px auto;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.pwa-button:hover {
+  background-color: var(--completed-color);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+}
+
+.pwa-button:active {
+  transform: translateY(0);
+}
+
+/* Hide button if PWA isn't supported */
+.pwa-button.hidden {
+  display: none;
+}
 

@@ -33,12 +33,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
   const badgeDefinitions = [
-    { id: 'week_one', name: 'Seeker', description: 'The Journey Just Begins!', threshold: 7, icon: '<img src="assets/Streak7.svg" alt="" style="margin-top: 20px;" />', points: 200 },
-    { id: 'month_one', name: 'Ascender', description: 'Excuses are for losers. You\'re not one', threshold: 15, icon: '<img src="assets/Streak30.svg" alt="" style="margin-top: 20px;" />', points: 300 },
-    { id: 'streak_30', name: 'Warrior', description: 'You\'ve Built Discipline. Now It\'s a War', threshold: 30, streak: true, icon: '<img src="assets/Streak40.svg" alt="" style="margin-top: 20px;" />', points: 1000 },
-    { id: 'half_way', name: 'Grinder', description: 'Most quit in the beginning. You didn\'t', threshold: 50, icon: '<img src="assets/Streak50.svg" alt="" style="margin-top: 20px;" />', points: 1500 },
-    { id: 'three_quarters', name: 'Persistent', description: 'Climbing Higher with purpose', threshold: 75, icon: '<img src="assets/Streak75.svg" alt="" style="margin-top: 20px;" />', points: 2000 },
-    { id: 'champion', name: 'Champion', description: 'You\'ve Mastered the Art of Consistency 🔥', threshold: 100, icon: '<img src="assets/Streak100.svg" alt="" style="margin-top: 20px;" />', points: 3000 }
+    { id: 'week_one', name: 'Seeker', description: 'The Journey Just Begins!', threshold: 7, icon: '<img src="assets/Streak7.png" alt="Seeker" style="margin-top: 20px;" />', points: 200 },
+    { id: 'month_one', name: 'Ascender', description: 'Excuses are for losers. You\'re not one', threshold: 15, icon: '<img src="assets/Streak15.png" alt="Ascender" style="margin-top: 20px;" />', points: 300 },
+    { id: 'streak_30', name: 'Warrior', description: 'You\'ve Built Discipline. Now It\'s a War', threshold: 30, streak: true, icon: '<img src="assets/Streak30.png" alt="Warrior" style="margin-top: 20px;" />', points: 1000 },
+    { id: 'half_way', name: 'Grinder', description: 'Most quit in the beginning. You didn\'t', threshold: 50, icon: '<img src="assets/Streak50.png" alt="Grinder" style="margin-top: 20px;" />', points: 1500 },
+    { id: 'three_quarters', name: 'Persistent', description: 'Climbing Higher with purpose', threshold: 75, icon: '<img src="assets/Streak75.png" alt="Persistent" style="margin-top: 20px;" />', points: 2000 },
+    { id: 'champion', name: 'Champion', description: 'You\'ve Mastered the Art of Consistency 🔥', threshold: 100, icon: '<img src="assets/Streak100.png" alt="Champion" style="margin-top: 20px;" />', points: 3000 }
   ];
 
 
@@ -90,17 +90,14 @@ document.addEventListener('DOMContentLoaded', function () {
       box.classList.add('completed');
       progress.push(dayNumber);
       progress.sort((a, b) => a - b);
-      addPoints(POINTS_CONFIG.dayCompleted);
       checkBadges();
 
       // Check for streak bonus
       if (isStreak(dayNumber)) {
-        addPoints(POINTS_CONFIG.streakBonus);
       }
     } else {
       box.classList.remove('completed');
       progress = progress.filter(d => d !== dayNumber);
-      deductPoints(POINTS_CONFIG.dayCompleted);
     }
 
     localStorage.setItem('progress100Days', JSON.stringify(progress));
@@ -339,3 +336,37 @@ function closeModal() {
 function closeBadgeModal() {
   document.getElementById('badgeUnlockedModal').style.display = 'none';
 }
+
+
+
+
+
+// Add this to your main JavaScript file
+const installButton = document.getElementById('installButton');
+let deferredPrompt;
+
+// Only show button if PWA is supported
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installButton.classList.remove('hidden');
+});
+
+// Button click handler
+installButton.addEventListener('click', async () => {
+  if (!deferredPrompt) return;
+  
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  
+  if (outcome === 'accepted') {
+    installButton.textContent = 'App Installed!';
+    installButton.disabled = true;
+  }
+  deferredPrompt = null;
+});
+
+// Hide button after installation
+window.addEventListener('appinstalled', () => {
+  installButton.classList.add('hidden');
+});

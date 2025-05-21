@@ -4,10 +4,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>100 Days Challenge</title>
+  <title>Burnova</title>
   <link rel="stylesheet" href="style.css">
   <link rel="icon" href="assets/logo.svg" type="image/png">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta name="theme-color" content="#ae274f">
 </head>
 
 <body class="dark-mode">
@@ -50,7 +53,6 @@
     <div class="main-content">
       <div class="grid-section">
         <div class="grid" id="grid"></div>
-        <!-- Decorative line added here -->
         <div class="divider-line">
           <div class="line"></div>
           <i class="fas fa-star"></i>
@@ -106,16 +108,6 @@
     </div>
   </div>
 
-  <div id="congratulationModal">
-    <div class="content">
-      <h2>🎉 Congratulations! 🎉</h2>
-      <div class="badge-unlocked">
-        <img src="assets/Champion.svg" alt="Champion Badge">
-        <p>You have completed the 100 Days Challenge!</p>
-      </div>
-      <button onclick="closeModal()">Close</button>
-    </div>
-  </div>
 
   <div id="badgeUnlockedModal">
     <div class="content">
@@ -155,6 +147,32 @@
     });
   </script>
   <script src="script.js"></script>
+
+
+<script>
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('/sw.js')
+        .then(registration => console.log('SW registered!'))
+        .catch(err => console.log('SW registration failed: ', err));
+    });
+  }
+</script>
+
+
+
+<!-- Add this button where you want it (e.g., in footer or a download section) -->
+<button id="installButton" class="pwa-button">
+  <i class="fas fa-download"></i> Install App
+</button>
+  <footer class="burnova-footer">
+    <div class="footer-bottom">
+      <div class="copyright">
+        &copy; <span id="current-year">2025 MrHackex. All rights reserved.</span>
+      </div>
+    </div>
+    </div>
+  </footer>
 </body>
 
 </html>
