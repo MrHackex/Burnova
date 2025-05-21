@@ -931,35 +931,3 @@ footer {
 }
 
 
-/* Add this to your style.css */
-.pwa-button {
-  background-color: var(--accent-color);
-  color: white;
-  border: none;
-  padding: 12px 24px;
-  border-radius: 8px;
-  font-size: 1rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  margin: 20px auto;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s ease;
-}
-
-.pwa-button:hover {
-  background-color: var(--completed-color);
-  transform: translateY(-2px);
-  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-}
-
-.pwa-button:active {
-  transform: translateY(0);
-}
-
-/* Hide button if PWA isn't supported */
-.pwa-button.hidden {
-  display: none;
-}
-
