@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>100 Days Challenge</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="assets/logo.svg" type="image/png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body class="dark-mode">
+
+  <nav class="navbar">
+    <a href="#" class="navbar-brand">
+      <i class="fas fa-fire"></i>
+      <span>Burnova</span>
+    </a>
+
+    <div class="theme-toggle">
+      <i class="fas fa-sun"></i>
+      <label class="switch">
+        <input type="checkbox" id="themeToggle">
+        <span class="slider round"></span>
+      </label>
+      <i class="fas fa-moon"></i>
+    </div>
+  </nav>
+
+
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <h1> <i class="fas fa-fire"></i>
+          100 Days Challenge</h1>
+        <p>TAKE ACTION OR DO NOTHING | STAY HARD!</p>
+        <div class="theme-toggle">
+          <i class="fas fa-sun"></i>
+          <label class="switch">
+            <input type="checkbox" id="themeToggle">
+            <span class="slider round"></span>
+          </label>
+          <i class="fas fa-moon"></i>
+        </div>
+      </div>
+    </header>
+
+
+    <div class="main-content">
+      <div class="grid-section">
+        <div class="grid" id="grid"></div>
+        <!-- Decorative line added here -->
+        <div class="divider-line">
+          <div class="line"></div>
+          <i class="fas fa-star"></i>
+          <div class="line"></div>
+        </div>
+      </div>
+
+      <div class="daily-task-container">
+        <h2><i class="fas fa-tasks"></i> Today's Task</h2>
+        <div class="task-input">
+          <input type="text" id="taskInput" placeholder="Enter today's task...">
+          <button id="addTaskBtn"><i class="fas fa-plus"></i></button>
+        </div>
+        <ul class="task-list" id="taskList"></ul>
+      </div>
+
+      <div class="stats-container">
+        <div class="stats-header">
+          <h2><i class="fas fa-chart-line"></i> Progress Stats</h2>
+          <button id="resetBtn" class="reset-icon-button" title="Reset Progress">
+            <i class="fas fa-rotate-left"></i>
+          </button>
+        </div>
+        <div class="stats">
+
+          <div class="stat-item">
+            <span class="stat-value" id="completionRate">0%</span>
+            <span class="stat-label">Completion Rate</span>
+          </div>
+
+          <div class="stat-item">
+            <span class="stat-value" id="userPoints">0</span>
+            <span class="stat-label">Points Earned</span>
+          </div>
+
+          <div class="stat-item">
+            <span class="stat-value" id="completedDays">0</span>
+            <span class="stat-label">Conquered Achievements </span>
+          </div>
+
+
+
+        </div>
+        <div class="progress-bar-container">
+          <div class="progress-bar" id="progressBar"></div>
+        </div>
+      </div>
+
+      <div class="badges-container">
+        <h2><i class="fas fa-trophy"></i> Achievements</h2>
+        <div class="badges-grid" id="badgesGrid"></div>
+      </div>
+    </div>
+  </div>
+
+  <div id="congratulationModal">
+    <div class="content">
+      <h2>🎉 Congratulations! 🎉</h2>
+      <div class="badge-unlocked">
+        <img src="assets/Champion.svg" alt="Champion Badge">
+        <p>You have completed the 100 Days Challenge!</p>
+      </div>
+      <button onclick="closeModal()">Close</button>
+    </div>
+  </div>
+
+  <div id="badgeUnlockedModal">
+    <div class="content">
+      <h2>🏆 Achievement Unlocked!</h2>
+      <div class="badge-info" id="unlockedBadgeInfo"></div>
+      <button onclick="closeBadgeModal()">Awesome!</button>
+    </div>
+  </div>
+
+  <div class="download">
+    <h2>Download This Website</h2>
+    <p>Follow the steps below to download this website to your device.</p>
+  </div>
+  <div class="download-section">
+    <img src="download.png" alt="How to download guide" class="guide-image">
+  </div>
+
+  <audio id="congratulationSound" src="https://assets.mixkit.co/sfx/preview/mixkit-achievement-bell-600.mp3"
+    preload="auto"></audio>
+  <audio id="badgeSound" src="https://assets.mixkit.co/sfx/preview/mixkit-unlock-game-notification-253.mp3"
+    preload="auto"></audio>
+
+
+  <div id="badges"></div>
+
+  <script>
+    const badgesDiv = document.getElementById('badges');
+    badgeDefinitions.forEach(badge => {
+      const div = document.createElement('div');
+      div.classList.add('badge');
+      div.innerHTML = `
+      <img src="${badge.icon}" alt="${badge.name}" width="50" height="50" />
+      <h3>${badge.name}</h3>
+      <p>${badge.description}</p>
+    `;
+      badgesDiv.appendChild(div);
+    });
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>
