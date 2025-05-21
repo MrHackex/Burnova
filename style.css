@@ -16,7 +16,7 @@
   --secondary-bg: #ffffff;
   --text-color: #222222;
   --accent-color: #ae274f; /* Vibrant orange */
-  --border-color: #ffc3ab;
+  --border-color: #e0e0e0;
   --completed-color: #ae274f;
   --box-shadow: 0 0 15px rgba(255, 107, 53, 0.1);
   --card-bg: #fff9f5;
@@ -48,7 +48,7 @@
 
 .light-mode .navbar {
   background-color: #ffffff;
-  border-bottom: 1px solid #ffc3ab;
+  border-bottom: 1px solid #ffddd0;
 }
 
 .light-mode .navbar-brand {
@@ -70,12 +70,12 @@
 .light-mode .stats-container,
 .light-mode .daily-task-container,
 .light-mode .badges-container {
-  border: 1px solid #ffc3ab;
+  border: 1px solid #ffddd0;
 }
 
 .light-mode .task-input input {
   background-color: #fff9f5;
-  border: 1px solid #ae274f; 
+  border: 1px solid #ffddd0;
 }
 
 .light-mode .badge {
@@ -99,7 +99,6 @@
 .light-mode #badgeUnlockedModal button:hover {
   background-color: #ff5722;
 }
-
 
 /* Update toggle switch in light mode */
 .light-mode input:checked + .slider {
@@ -152,7 +151,7 @@ h1 {
 }
 
 p {
-  font-size: 1.2em;
+  font-size: 1em;
   margin-bottom: 30px;
   color: #bbbbbb;
   font-weight: 400;
@@ -605,6 +604,17 @@ footer {
 
 }
 
+@media (max-width: 450px) {
+
+
+  h1 {
+    font-size: 1.8em;
+  }
+
+  p {
+    font-size: 1em;
+  }
+}
 @media (max-width: 380px) {
 
 
@@ -613,7 +623,20 @@ footer {
   }
 
   p {
-    font-size: 1em;
+    font-size: .9em;
+  }
+
+
+}
+@media (max-width: 365px) {
+
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  p {
+    font-size: .9em;
   }
 
 
@@ -913,7 +936,7 @@ footer {
   padding-top: 1rem;
 
   border-top: 1px solid var(--border-color);
-  font-size: 1rem;
+  font-size: 0.9rem;
   opacity: 0.8;
 }
 
@@ -929,5 +952,3 @@ footer {
     justify-content: center;
   }
 }
-
-
