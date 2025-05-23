@@ -656,12 +656,9 @@ footer {
   }
 }
 
-
-
-
 .download-section {
-  max-width: 600px;
-  margin: 20px auto; /* shorthand for 20px top/bottom, auto left/right */
+  max-width: 550px;
+  margin: 20px auto; 
   background-color: var(--secondary-bg);
   padding: 20px;
   border-radius: 10px;
@@ -674,12 +671,12 @@ footer {
 }
 
 .guide-image {
-  max-width: calc(100% - 4px);
-  /* Accounts for border */
+  width: 100%; 
+  max-width: calc(100% - 4px); 
   border-radius: 8px;
   border: 2px solid var(--border-color);
-  margin: 10px auto;
   display: block;
+  object-fit: contain; 
 }
 
 .navbar {
