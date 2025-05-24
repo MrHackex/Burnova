@@ -370,3 +370,31 @@ installButton.addEventListener('click', async () => {
 window.addEventListener('appinstalled', () => {
   installButton.classList.add('hidden');
 });
+
+// service-worker.js
+self.addEventListener('install', function(e) {
+  e.waitUntil(
+    caches.open('burnova-cache').then(function(cache) {
+      return cache.addAll([
+        '/',
+        '/index.html',
+        '/style.css',
+        '/script.js',
+        '/icons/icon-192.png',
+        '/icons/icon-512.png'
+      ]);
+    })
+  );
+});
+
+self.addEventListener('fetch', function(e) {
+  e.respondWith(
+    caches.match(e.request).then(function(response) {
+      return response || fetch(e.request);
+    })
+  );
+});
+
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('/service-worker.js');
+}
